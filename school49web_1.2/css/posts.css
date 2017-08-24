@@ -1,0 +1,97 @@
+/*оформление ссылки читать далее*/
+.pread{
+	color:#6352DC;
+	text-decoration: none;
+}
+.pread:hover{
+	color:#4533C9;
+	text-decoration: none;
+}
+/* слой затемнения */
+.dm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: none;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+/* активируем слой затемнения и модальное окно */
+.dm-overlay:target {
+    display: block;
+/* анимация и время задержки */
+    -webkit-animation: fade .6s;
+    -moz-animation: fade .6s;
+    animation: fade .6s;
+}
+/* блочная таблица */
+.dm-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+/* ячейка блочной таблицы */
+.dm-cell {
+    display: table-cell;
+    padding: 0 1em;
+    vertical-align: middle;
+    text-align: center;
+}
+/* модальный блок */
+.dm-modal {
+	border-radius: 10px;
+    display: inline-block;
+    padding: 20px;
+/* максимально возможная ширина */
+    max-width: 50em;
+    background:#f0f0f0;
+/* внешняя тень блока */
+    -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    color: #000;
+    text-align: left;
+/* анимация и время задержки */
+    -webkit-animation: fade .8s;
+    -moz-animation: fade .8s;
+    animation: fade .8s;
+}
+.close {
+    z-index: 9999;
+    float: right;
+    width: 30px;
+    height: 30px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    line-height: 26px;
+    cursor: pointer;
+}
+.close:after {
+    display: block;
+    border: 2px solid black;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    content: 'X';
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    transition: all 0.6s;
+    -webkit-transform: scale(0.85);
+    -moz-transform: scale(0.85);
+    -ms-transform: scale(0.85);
+    transform: scale(0.85);
+}
+/* кнопка закрытия при наведении */
+
+.close:hover:after {
+    border-color: darkred;
+    color: darkred;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
