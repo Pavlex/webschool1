@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>School49 Feedback</title>
   <meta charset="UTF-8">
@@ -9,8 +10,10 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/posts.css">
+
 </head>
 <body>
+
   <section class="vertical-center slider">
     <div>
       <img src="http://placehold.it/350x100?text=1">
@@ -64,22 +67,23 @@
 		<div class="col-md-9 posts" style="min-height: 530px;">
 				<div class="postsdiv">
 					<div><h4>Связаться с нами</h4></div>					
-						<form class="form-horizontal">
+						<form id="fr1" class="form-horizontal">
 						  <div class="form-group">
 							<label for="exampleInputName2">Ваше имя</label>
-							<input name="from" type="text" class="form-control" id="exampleInputName2" placeholder="Ваше имя">
+							<input name="fio" type="text" class="form-control" id="subject" placeholder="Ваше имя">
 						  </div>
 						  <br>
 						  <div class="form-group">
 							<label for="exampleInputEmail2">Ваша электронная почта</label>
-							<input name="mail" type="email" class="form-control" id="exampleInputEmail2" placeholder="Ваша электронная почта">
+							<input name="email" type="email" class="form-control" id="exampleInputEmail2" placeholder="Ваша электронная почта">
 						  </div>
 						  <br>
 						  <div>
-						  	<textarea name="message" class="form-control" rows="9"></textarea>
+						  	<textarea id="message" name="message" class="form-control" rows="9"></textarea>
 						  </div>
 						  <br>
-						  <button onclick="validate(this.form)" type="button" class="btn btn-secondary">Отправить</button>
+						  <p><a id="mail-link" class="btn btn-primary">Create email</a></p>
+						  <button id="bt1" onclick="loadEvents()" type="button" class="btn btn-secondary">Отправить</button>
 						</form>
 				</div>
 	</div>
@@ -142,6 +146,13 @@
    <div id="footer">
 	 <section style="text-align: center">Copyright © 2006-2017 “МБОУ СОШ №49”. Все права защищены.</section>
 	</div>
+	
+	<p><input id="subject" type="text" placeholder="type your subject here" 
+    class="form-control"></p>
+<p><input id="message" type="text" placeholder="type your message here" 
+    class="form-control"></p>
+<p><a id="mail-link" class="btn btn-primary">Create email</a></p>
+ 
   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
   <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/menufixed.js" type="text/javascript"></script>
@@ -160,6 +171,17 @@
     }
   </style>
   <script type="text/javascript">
+	      function loadEvents() {
+        var mailString;
+        function updateMailString() {
+            mailString = '?subject=' + encodeURIComponent($('#subject').val())
+                + '&body=' + encodeURIComponent($('#message').val());
+            $('#mail-link').attr('href',  'mailto:pavlex57@gmail.com' + mailString);
+        }
+        $( "#subject" ).focusout(function() { updateMailString(); });
+        $( "#message" ).focusout(function() { updateMailString(); });
+        updateMailString();
+    }
     function showError(container, errorMessage) {
       container.className = 'error';
       var msgElem = document.createElement('span');
@@ -178,14 +200,14 @@
     function validate(form) {
       var elems = form.elements;
 
-      resetError(elems.from.parentNode);
-      if (!elems.from.value) {
-        showError(elems.from.parentNode, 'Укажите Ваше имя');
+      resetError(elems.fio.parentNode);
+      if (!elems.fio.value) {
+        showError(elems.fio.parentNode, 'Укажите Ваше имя');
       }
 		
-	  resetError(elems.mail.parentNode);
-      if (!elems.mail.value) {
-        showError(elems.mail.parentNode, 'Укажите Вашу почту');
+	  resetError(elems.email.parentNode);
+      if (!elems.email.value) {
+        showError(elems.email.parentNode, 'Укажите Вашу почту');
       }
 
 
